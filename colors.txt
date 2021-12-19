@@ -1,0 +1,5 @@
+#212121 - main-content bg;
+#323232 - navbar bg;
+#FF2626 - navbar color;
+#E8E1D9 - navbar color:hover;
+#FEFBF3 - letters color

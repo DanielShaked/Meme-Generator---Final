@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico?">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeIt</title>
+</head>
+
+<body onload="init()">
+    <header class="main-header main-layout flex align-center space-between">
+        <div onclick="onHomePage()" class="logo">MemeIt</div>
+        <nav class="main-nav">
+            <ul class="clean-list flex">
+                <li class="datalist">
+                    <input class="input-dl" onchange="onFilterBy(this.value)" list="catagories" id="meme-options">
+                    <datalist id="catagories">
+                        <option value="funny">
+                        <option value="celebrity">
+                        <option value="series">
+                        <option value="politics">
+                        <option value="animals">
+                    </datalist>
+                    <label for="meme-options"><span><i class="fas fa-filter"></i></span></label>
+
+                </li>
+                <li class="hover me" onclick="onFilterBy('USER')">My Memes</i>
+                <li onclick="onOpenStatistics()">
+                    <div class="user-circle">
+                        <i class="far fa-user-circle hover user"></i>
+                        <span class="user-name-msg hidden">hello <span class="rdr-name"></span></span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content main-layout gallery-container grid">
+
+    </main>
+
+
+    <section class="stat-container main-layout grid hidden">
+        <div>
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>category</th>
+                        <th>percentage(%)</th>
+                        <th>color</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="modal-container main-layout hidden">
+        <h2>Welcome to MemeIt</h2>
+        <p>We believe you deserve credit for your great memes!
+            <br> So for everyone to know <b>who created</b> the meme - please enter your nickname here
+        </p>
+
+        <h5>Do not worry, you only have to do it once!</h5>
+
+
+        <input class="nickname" type="text">
+        <button onclick="addUser()"><i class="fas fa-plus"></i></button>
+
+        <p>In addition, by clicking on the &nbsp <span><i class="far fa-user-circle modal-section"></i></span> &nbsp
+            (top-right
+            bar) , you can be
+            exposed to
+            your statistics (what is your favorite
+            category, how much memes you have created and more!)</p>
+    </section>
+
+
+
+    <div class="editor-main-container main-layout hidden ">
+        <span onclick="onToggleEditor(false)" class="escape"><i class="fas fa-backspace"></i></span>
+        <div class="canvas-container">
+            <canvas height="420px" width="400px"></canvas>
+        </div>
+
+        <div class="editor-container flex column">
+            <input class="input-txt" placeholder="Enter your meme here..." type="text"
+                oninput="onChangeText(this.value)">
+            <div class="line-editor-area flex">
+                <i onclick="onFinishLine()" class="fas fa-check"></i>
+                <div onclick="onMoveLine(-1)"><i class="fas fa-arrow-up"></i></div>
+                <div onclick="onMoveLine(1)"><i class="fas fa-arrow-down"></i></div>
+            </div>
+            <div class="text-editor-area flex space-evenly wrap align-center ">
+                <div onclick="onSetSize(-2)"><i class="far fa-minus-square"></i></div>
+                <div onclick="onSetSize(2)"><i class="far fa-plus-square"></i></div>
+                <div onclick="onSetAlign('left')"><i class="fas fa-align-left"></i></div>
+                <div onclick="onSetAlign('center')"> <i class="fas fa-align-center"></i></div>
+                <div onclick="onSetAlign('right')"> <i class="fas fa-align-right"></i></div>
+
+                <select onchange="onSetFont(this)" class="font-family" name="" id="">
+                    <option value="Impact">Impact</option>
+                    <option value="Ariel">Ariel</option>
+                    <option value="Monospace">Monospace</option>
+                </select>
+                <div> <label for="color-picker">
+                        <i class="fas fa-palette under"></i>
+                        <input onchange="onChangeColor(this.value)" id="color-picker" type="color"
+                            style="opacity: 0;width: 1px;"></div>
+                <div><label for="stroke-color">
+                        <i class="fas fa-paint-brush"></i>
+                        <input onchange="onSetStroke(this.value)" id="stroke-color" type="color"
+                            style="opacity: 0;width: 1px;"></div>
+
+            </div>
+
+            <div class="actions-btns">
+                <button onclick="onSaveMeme()" class="action-btn save-btn"><i class="far fa-save center"></i></button>
+                <button onclick="onDownloadImg()" class="action-btn save-btn"> <i
+                        class="fas fa-download center"></i></button>
+                <a href="#" id="dn-link" download="my-meme.jpg" hidden>Download
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="main-footer main-layout">
+        <div class="copyrights">
+            <small><i class="far fa-copyright"></i> powered by Daniel Shaked 2021 </small>
+        </div>
+        <div class="icons">
+            <a href="https://github.com/danielshaked" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+
+        </div>
+    </footer>
+
+
+
+    <i onclick="onHandlePages(1)" class="fas fa-chevron-left"></i>
+    <i onclick="onHandlePages(-1)" class="fas fa-chevron-right"></i>
+    <div class="popup hidden">you not saved yet</div>
+
+
+
+
+
+    <script src="js/service/storage.service.js"></script>
+
+    <script src="js/service/meme.service.js"></script>
+    <script src="js/service/gallery.service.js"></script>
+    <script src="js/controller/gallery.controller.js"></script>
+    <script src="js/controller/Meme.controller.js"></script>
+    <script src="js/service/user.service.js"></script>
+    <script src="js/controller/user.controller.js"></script>
+</body>
+
+
+
+
+</html>
+
+<div></div>
