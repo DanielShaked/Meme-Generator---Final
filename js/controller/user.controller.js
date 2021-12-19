@@ -74,6 +74,7 @@ function renderUserName() {
 
 function onOpenStatistics() {
     toggleStatModal(true);
+    if (!gOnGalleryPage) onToggleEditor(false);
     onToggleGallery(false);
     updateGalleryPage(false);
     renderStatistics();
