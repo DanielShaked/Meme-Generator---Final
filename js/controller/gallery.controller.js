@@ -27,9 +27,9 @@ function renderPopup(key) {
 
 // Actions(on)
 function onImgSelect(imgId) {
-    updateUserData()
+    updateUserData();
     setImg(imgId);
-    updateCatMap()
+    updateCatMap();
     onResetMeme();
     document.querySelector('.input-txt').value = getMemeTxt();
     onToggleEditor(true);

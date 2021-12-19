@@ -96,8 +96,8 @@ function setStrokeColor(color) {
 
 function setAlign(dir) {
     if (dir === 'left') gMeme.lines[gMeme.selectedLineIdx].align = 'start';
-    if (dir === 'right') gMeme.lines[gMeme.selectedLineIdx].align = 'center';
-    if (dir === 'center') gMeme.lines[gMeme.selectedLineIdx].align = 'end';
+    if (dir === 'center') gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+    if (dir === 'right') gMeme.lines[gMeme.selectedLineIdx].align = 'end';
 }
 
 function setFont(font) {
@@ -158,6 +158,17 @@ function updateLineIdx() {
 }
 
 
+function alignTxt(dir) {
+    let x;
+    if (dir === 'center') x = 200;
+    else if (dir === 'start') x = 65;
+    else if (dir === 'end') x = 360;
+    return x;
+}
+
+
+
 function _saveMemeToStorage() {
     saveToStorage(STORAGE_KEY, gMeme);
 }
+

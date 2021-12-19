@@ -16,23 +16,12 @@ function renderStatistics() {
     const user = getDataForDisplay();
 
     if (!user || user.length === 0) return;
-    const strHtmls = `
 
-    <div class="title-stat">
-    <h2> hello ${user.nickname} ${user.icon} </h2>
-    <h4>Let's see your stats</h4>
-    </div>
-    <div class="content-stat">
-    <div><span class="under-line"> you clicked:</span>   <span>${user.clicks}  </span></div>
-    <div><span class="under-line"> you saved:</span> <span>      ${user.saved}</span>  </div>
-    <div><span class="under-line"> you Download: </span>   <span>${user.downloaded}  </span></div>
-    </div>
-    <div> <canvas class="stat-canvas clicks" height:800px; width:800px> </canvas> </div>
-    
-    `
-
-    elModal.innerHTML += strHtmls
-
+    document.querySelector('.nickname-stat').innerText = `${user.nickname} ${user.icon}`;
+    const elContentContainer = document.querySelector('.content-stat');
+    elContentContainer.querySelector('.clicks-stat').innerText = `${user.clicks}`
+    elContentContainer.querySelector('.saved-stat').innerText = `${user.saved}`
+    elContentContainer.querySelector('.downloaded-stat').innerText = `${user.downloaded}`
 }
 
 
@@ -80,12 +69,6 @@ function renderUserName() {
     const elSpanInnerName = elSpan.querySelector('.rdr-name');
     elSpanInnerName.innerText = user.nickname;
     elSpan.classList.remove('hidden')
-}
-
-function isUserStorage() {
-    const data = loadFromStorage('userDB');
-    if (!data || data === []) return false;
-    else return true;
 }
 
 

@@ -28,11 +28,7 @@ function createUser(nickname, icon = '😅', color = 'black') {
 
 
 function getDataForDisplay() {
-    const user = loadFromStorage('userDB');
-    if (!user || user.length === 0) {
-        return gUser
-    }
-    return user;
+    return gUser;
 }
 
 
