@@ -656,8 +656,12 @@ div table {
         font-size: 1.5rem;
     }
 
-    ul {
+    ul li {
         margin-bottom: 25px;
+    }
+
+    .main-header li, .input-dl, .user-name-msg {
+        font-size: 1.1rem;
     }
 }
 
