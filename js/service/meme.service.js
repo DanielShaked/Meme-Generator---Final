@@ -1,6 +1,6 @@
 'use strict'
 
-const STORAGE_KEY = 'memeDB'
+const STORAGE_KEY = 'memeDB';
 
 function getImgsToDisplay() {
     return gImgs;
@@ -45,7 +45,7 @@ const gMemeDef = {
     ]
 }
 
-let gMeme = { ...gMemeDef }
+let gMeme = { ...gMemeDef };
 
 
 
@@ -64,14 +64,14 @@ function getMeme() {
 
 
 function getMemeTxt() {
-    return gMeme.lines[gMeme.selectedLineIdx].txt
+    return gMeme.lines[gMeme.selectedLineIdx].txt;
 }
 
 // set
 function setImg(imgId) {
     let storageMatch;
     if (savedMemes) {
-        storageMatch = savedMemes.find(meme => meme.selectedImgId === imgId)
+        storageMatch = savedMemes.find(meme => meme.selectedImgId === imgId);
     }
     if (storageMatch) {
         gMeme = storageMatch;
@@ -126,11 +126,9 @@ function moveLine(diff) {
 function resetTxt() {
     if (savedMemes) {
         savedImgs = savedMemes.map(meme => meme.selectedImgId);
-        console.log('savedImgs:', savedImgs);
 
         if (savedImgs.includes(gMeme.selectedImgId)) return;
     }
-    console.log('vla');
     gMeme.lines.forEach(line => {
         line.txt = ''
         line.size = 35;
@@ -141,7 +139,6 @@ function resetTxt() {
 
 function saveMeme() {
     const imgIdx = gMeme.selectedImgId;
-    console.log('imgIdx:', imgIdx);
     const img = gImgs.find(img => img.id === imgIdx);
     img.keyWords.push('USER')
     SaveDataToLocalStorage(gMeme);

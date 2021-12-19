@@ -1,12 +1,12 @@
 'use strict'
 
 function addUser() {
-    const elInputValue = document.querySelector('.nickname').value
-    createUser(elInputValue)
-    toggleModal(false)
+    const elInputValue = document.querySelector('.nickname').value;
+    createUser(elInputValue);
+    toggleModal(false);
     renderUserName();
     updateGalleryPage(true);
-    renderGallery()
+    renderGallery();
     handleChevron();
 }
 
@@ -19,9 +19,9 @@ function renderStatistics() {
 
     document.querySelector('.nickname-stat').innerText = `${user.nickname} ${user.icon}`;
     const elContentContainer = document.querySelector('.content-stat');
-    elContentContainer.querySelector('.clicks-stat').innerText = `${user.clicks}`
-    elContentContainer.querySelector('.saved-stat').innerText = `${user.saved}`
-    elContentContainer.querySelector('.downloaded-stat').innerText = `${user.downloaded}`
+    elContentContainer.querySelector('.clicks-stat').innerText = `${user.clicks}`;
+    elContentContainer.querySelector('.saved-stat').innerText = `${user.saved}`;
+    elContentContainer.querySelector('.downloaded-stat').innerText = `${user.downloaded}`;
 }
 
 
@@ -30,16 +30,16 @@ function renderArcStat() {
     const elCanvas = document.querySelector('.stat-canvas');
     const ctx = elCanvas.getContext('2d');
 
-    const elTable = document.querySelector('tbody')
+    const elTable = document.querySelector('tbody');
 
     const dataKeys = Object.keys(getStatForRender());
     const dataVals = Object.values(getStatForRender());
     const sum = dataVals.reduce((acc, num) => acc + num, 0);
-    const colors = ['#F05454', '#7CD1B8', '#FFE400', '#064635', '#EC255A']
+    const colors = ['#F05454', '#7CD1B8', '#FFE400', '#064635', '#EC255A'];
 
 
     let temp = 0;
-    let strHTMLs = ``
+    let strHTMLs = ``;
 
     for (let i = 0; i < dataVals.length; i++) {
         ctx.fillStyle = colors[i];
@@ -65,17 +65,17 @@ function renderArcStat() {
 
 function renderUserName() {
     const user = getDataForDisplay();
-    const elSpan = document.querySelector('.user-name-msg')
+    const elSpan = document.querySelector('.user-name-msg');
     const elSpanInnerName = elSpan.querySelector('.rdr-name');
     elSpanInnerName.innerText = user.nickname;
-    elSpan.classList.remove('hidden')
+    elSpan.classList.remove('hidden');
 }
 
 
 function onOpenStatistics() {
     toggleStatModal(true);
     onToggleGallery(false);
-    updateGalleryPage(false)
+    updateGalleryPage(false);
     renderStatistics();
     renderArcStat();
 
@@ -85,7 +85,7 @@ function toggleStatModal(isOpen) {
     const elStatModal = document.querySelector('.stat-container');
     if (isOpen) elStatModal.classList.remove('hidden');
     else {
-        elStatModal.classList.add('hidden')
+        elStatModal.classList.add('hidden');
     }
 
 
@@ -97,12 +97,12 @@ function toggleModal(isOpen) {
     const elModal = document.querySelector('.modal-container');
     if (isOpen) {
         setTimeout(() => {
-            onToggleGallery(false)
+            onToggleGallery(false);
             elModal.classList.remove('hidden')
         }, 1200)
 
-        onToggleEditor(false)
+        onToggleEditor(false);
 
     }
-    if (!isOpen) elModal.classList.add('hidden')
+    if (!isOpen) elModal.classList.add('hidden');
 }

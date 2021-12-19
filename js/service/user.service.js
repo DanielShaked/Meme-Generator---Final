@@ -44,7 +44,6 @@ function updateCatMap() {
     gImgs.forEach(img => {
         if (img.id === gMeme.selectedImgId) {
             const category = img.keyWords[0];
-            console.log('category:', category);
             gUser.mapCategory[category] = (gUser.mapCategory[category]) ? gUser.mapCategory[category] + 1 : 1
         }
     })

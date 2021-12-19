@@ -17,7 +17,7 @@ var gPopups = {
 
 
 function getImgsToDisplay() {
-    var startIdx = gPageIdx * PAGE_SIZE
+    let startIdx = gPageIdx * PAGE_SIZE;
     if (savedMemes) savedImgs = savedMemes.map(meme => meme.selectedImgId);
     if (gFilterBy === 'ALL') {
         var imgs = gImgs.slice(startIdx, startIdx + PAGE_SIZE);
@@ -48,11 +48,11 @@ function getImgsToDisplay() {
 
 
 function updateGalleryPage(status) {
-    gOnGalleryPage = status
+    gOnGalleryPage = status;
 }
 
 function isOnGalleryPage() {
-    return gOnGalleryPage
+    return gOnGalleryPage;
 }
 
 
@@ -63,7 +63,7 @@ function updateLastPage(length) {
 
 function getCurrPageLength() {
     const imgs = getImgsToDisplay();
-    return imgs.length
+    return imgs.length;
 }
 
 function getLastPageLength() {

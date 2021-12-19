@@ -15,12 +15,11 @@ function renderGallery() {
 
 function renderPopup(key) {
     const popups = getPopUps();
-    console.log('popups:', popups);
 
     const elPopup = document.querySelector('.popup');
     elPopup.innerText = popups[key];
-    elPopup.classList.remove('hidden')
-    setTimeout(() => elPopup.classList.add('hidden'), 3000)
+    elPopup.classList.remove('hidden');
+    setTimeout(() => elPopup.classList.add('hidden'), 3000);
 
 }
 
@@ -68,7 +67,7 @@ function onFilterBy(value) {
     renderGallery();
     updateGalleryPage(true);
     onToggleEditor(false);
-    toggleStatModal(false)
+    toggleStatModal(false);
     setTimeout(() => document.querySelector('.input-dl').value = '', 2000);
 }
 

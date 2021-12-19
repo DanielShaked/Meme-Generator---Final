@@ -151,10 +151,9 @@ function onSetAlign(dir) {
 
 
 function onSetFont(font) {
-    console.log('font:', font);
 
-    setFont(font.value)
-    renderMeme()
+    setFont(font.value);
+    renderMeme();
 }
 
 function onFinishLine() {
@@ -164,15 +163,15 @@ function onFinishLine() {
 }
 
 function onDownloadImg() {
-    gIsDownload = true
-    renderMeme(false)
+    gIsDownload = true;
+    renderMeme(false);
     setTimeout(() => {
         var url = gCanvas.toDataURL('image2/jpg', 1.0);
-        var link = document.getElementById("dn-link")
-        link.href = url
-        link.click()
-        gIsDownload = false
-        renderMeme()
+        var link = document.getElementById("dn-link");
+        link.href = url;
+        link.click();
+        gIsDownload = false;
+        renderMeme();
     }, 50);
     renderPopup('downloaded');
     updateDownload();
@@ -188,8 +187,8 @@ function onToggleEditor(isOpen) {
     }
     else {
         elEditor.add('hidden');
-        updateGalleryPage(true)
-        renderGallery()
+        updateGalleryPage(true);
+        renderGallery();
     }
     handleChevron();
 
